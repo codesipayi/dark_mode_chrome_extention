@@ -1,8 +1,7 @@
 var darkTheme = localStorage.getItem('dark-theme');
 
 document.addEventListener('keydown', function (e) {
-    //SHIFT + something
-    console.log(e)
+    
     if (e.shiftKey && e.altKey) {
         switch (e.code) {
 
@@ -32,17 +31,16 @@ function toggleTheme() {
 
 }
 
-console.log("dark theme enabled:", localStorage.getItem('dark-theme'));
 if (darkTheme == "true") {
     toggleTheme();
 }
 
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
-        if (request.greeting == "hello") {
+        if (request.data == "toggle") {
             updateLocalStorage();
             toggleTheme();
-            sendResponse({ farewell: "goodbye" });
+            sendResponse({ data: "done" });
         }
     }
 );
