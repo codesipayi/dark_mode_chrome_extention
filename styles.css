@@ -1,0 +1,9 @@
+.dark-mode {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+.dark-mode .inverted {
+    filter: invert(1) ;
+}
+
+
